@@ -10,11 +10,22 @@
 Este repositorio contiene el desarrollo del **Trabajo Práctico Nº3** de la materia *Programación Visual*.  
 El objetivo es realizar una introducción al desarrollo de aplicaciones web utilizando **React**, conceptos clave, estructura básica, uso de componentes, estado y hooks. 
 
-### Estructura de las páginas
-- **index.html**: Página principal con bienvenida, navegación, estadísticas y novedades.  
-- **proyectos.html**: Explorador de proyectos, con filtros y listado en formato de tarjetas (imagen, título, descripción y enlace).  
-- **detalle.html**: Página de detalle de un proyecto, mostrando encabezado, descripción, recursos y equipo.  
-- **perfil.html**: Perfil de usuario con información personal (imagen, nombre y rol).
+## Página de Proyectos Educativos
+
+La página de proyectos educativos se organiza con una estructura basada en componentes reutilizables de React:
+
+- **Header.jsx**: Renderiza el encabezado del sitio.  
+- **Nav.jsx**: Renderiza la barra de navegación. En esta etapa, los enlaces son estáticos y no redirigen a otras pestañas, ya que el contenido principal es el listado de proyectos.  
+- **ListaProyectos.jsx**: Renderiza la lista de proyectos, permitiendo gestionar las acciones de agregar, eliminar y buscar.  
+- **Footer.jsx**: Renderiza el pie de página.  
+
+### Funcionalidades implementadas
+- **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
+- **agregarProyecto**: recibe un objeto y lo añade al arreglo.  
+- **eliminarProyecto**: recibe un id y remueve el proyecto correspondiente.  
+- **buscarProyecto**: recibe un texto y retorna los proyectos cuyo título coincida.  
+
+El objetivo principal es mostrar el **Listado de Proyectos** como contenido central de la página, manteniendo una estructura clara y reutilizable.    
 
 ### Estilos aplicados
 Se utilizaron las tres formas de CSS:
@@ -25,7 +36,7 @@ Se utilizaron las tres formas de CSS:
 - Variables CSS en `:root` para colores y tipografía.  
 - Estados interactivos (`:hover`, `:focus`, `:active`) en botones y enlaces.  
 
-# React + Vite
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -46,7 +57,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - HTML5  
 - CSS3
 - JavaScript
-- React  
+- React + Vite 
 - Git & GitHub  
 
 ## Licencia
