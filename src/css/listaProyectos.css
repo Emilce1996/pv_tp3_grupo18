@@ -1,0 +1,165 @@
+/* Titulo */
+.lista-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--violeta-oscuro);
+  margin-bottom: 1.2rem;
+}
+
+/* Búsqueda por ID */
+.input-busqueda {
+  display: block;
+  margin: 0 auto 1.5rem auto;
+  padding: 10px 15px;
+  width: 60%;
+  max-width: 400px;
+  border: 2px solid var(--violeta-medio);
+  border-radius: 20px;
+  font-size: 1rem;
+  color: var(--violeta-oscuro);
+  background: linear-gradient(
+    to right,
+    var(--violeta-claro),
+    #fff,
+    var(--violeta-claro)
+  );
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: var(--violeta-oscuro);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+}
+
+.card {
+  border: 2px solid var(--violeta-medio);
+  border-radius: 8px;
+  width: 250px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  border-color: var(--violeta-oscuro);
+}
+
+/* Cuadro superior: título */
+.card-header {
+  background: linear-gradient(
+    to right,
+    var(--violeta-medio) 0%,
+    var(--violeta-claro) 50%,
+    var(--violeta-medio) 100%
+  );
+  padding: 1rem;
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: var(--violeta-oscuro);
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Cuadro inferior: id, categoría y estado */
+.card-body {
+  background: linear-gradient(
+    to bottom,
+    var(--violeta-medio) 0%,
+    var(--violeta-claro) 50%,
+    var(--violeta-medio) 100%
+  );
+  padding: 1rem;
+  text-align: left;
+  color: var(--violeta-oscuro);
+}
+
+.card-body p {
+  margin: 0.3rem 0;
+  font-weight: 500;
+}
+
+/* Button Eliminar */
+.btn-eliminar {
+  background: linear-gradient(
+    to right,
+    var(--violeta-oscuro),
+    var(--violeta-medio)
+  );
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 0.5rem auto 1rem auto;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-eliminar:hover {
+  background: linear-gradient(to right, #c0392b, #ff6b6b);
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-eliminar:active {
+  transform: scale(0.95);
+}
+
+/* Button Agregar */
+.btn-agregar {
+  background: linear-gradient(
+    to right,
+    var(--violeta-medio),
+    var(--violeta-oscuro)
+  );
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-agregar:hover {
+  background: linear-gradient(
+    to right,
+    var(--violeta-oscuro),
+    var(--violeta-medio)
+  );
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-agregar:active {
+  transform: scale(0.95);
+}
