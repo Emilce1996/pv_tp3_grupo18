@@ -10,9 +10,9 @@
 Este repositorio contiene el desarrollo del **Trabajo Práctico Nº3** de la materia *Programación Visual*.  
 El objetivo es realizar una introducción al desarrollo de aplicaciones web utilizando **React**, conceptos clave, estructura básica, uso de componentes, estado y hooks. 
 
-## Página de Proyectos Educativos
+### Página de Gestión de Proyectos Educativos
 
-La página de proyectos educativos se organiza con una estructura basada en componentes reutilizables de React:
+La página de gestión de proyectos educativos se organiza con una estructura basada en componentes reutilizables de React:
 
 - **Header.jsx**: Renderiza el encabezado del sitio.  
 - **Nav.jsx**: Renderiza la barra de navegación. En esta etapa, los enlaces son estáticos y no redirigen a otras pestañas, ya que el contenido principal es el listado de proyectos.  
