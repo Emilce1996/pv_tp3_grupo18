@@ -18,17 +18,17 @@ const proyectoService = (() => {
     proyectos = proyectos.filter((p) => p.id !== id);
   };
 
-  //const buscarProyecto = (texto) => {
-    //return proyectos.filter((p) =>
-      //p.titulo.toLowerCase().includes(texto.toLowerCase()),
-    //);
-  //};
+  const buscarProyecto = (texto) => {
+    return proyectos.filter((p) =>
+      p.titulo.toLowerCase().includes(texto.toLowerCase()),
+    );
+  };
 
   return {
     //obtenerProyectos,
     agregarProyecto,
     eliminarProyecto,
-    //buscarProyecto,
+    buscarProyecto,
   };
 })();
 
