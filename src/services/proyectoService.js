@@ -1,5 +1,4 @@
-const proyectoService = (() => {
-
+const proyectoService = (() => { 
   let proyectos = [
     { id: 1, titulo: "Sistema de Educación", categoria: "Web", estado: "En progreso"},
     { id: 2, titulo: "App de Álgebra Lineal", categoria: "Móvil", estado: "Finalizado"},
@@ -8,7 +7,7 @@ const proyectoService = (() => {
     { id: 5, titulo: "Juego Educativo", categoria: "Móvil", estado: "Finalizado"},
   ];
 
-  //const obtenerProyectos = () => [...proyectos];
+  const obtenerProyectos = () => [...proyectos];
 
   const agregarProyecto = (nuevoProyecto) => {
     proyectos.push(nuevoProyecto);
@@ -25,7 +24,7 @@ const proyectoService = (() => {
   };
 
   return {
-    //obtenerProyectos,
+    obtenerProyectos,
     agregarProyecto,
     eliminarProyecto,
     buscarProyecto,
