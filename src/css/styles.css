@@ -85,13 +85,3 @@ nav a:active {
   font-weight: bold;
   font-size: 1rem;
 }
-
-.stats-badge {
-  display: inline-block;
-  margin-top: 1rem;
-  background-color: var(--violeta-oscuro); /* Usás su variable */
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-}
-
