@@ -1,22 +1,14 @@
-import { useState } from "react";
 import proyectoService from "../services/proyectoService";
+import { useState } from "react";
+import ProyectoCard from "./ProyectoCard";
+import DetalleProyecto from "./DetalleProyecto";
 
 const ListaProyectos = () => {
   const [proyectos, setProyectos] = useState(
     proyectoService.obtenerProyectos(),
   );
   const [busqueda, setBusqueda] = useState("");
-
-  const agregarEjemplo = () => {
-    const nuevo = {
-      id: Date.now(),
-      titulo: "Nuevo Proyecto",
-      categoria: "Web",
-      estado: "Finalizado",
-    };
-    proyectoService.agregarProyecto(nuevo);
-    setProyectos(proyectoService.obtenerProyectos());
-  };
+  const [seleccionado, setSeleccionado] = useState(null);
 
   const eliminarProyecto = (id) => {
     proyectoService.eliminarProyecto(id);
@@ -29,45 +21,39 @@ const ListaProyectos = () => {
 
   return (
     <main>
-      <h2 className="lista-title">Proyectos Disponibles</h2>
+      {seleccionado ? (
+        <>
+          <h2 className="detalle-title">Detalles del Proyecto</h2>
+          <DetalleProyecto proyecto={seleccionado} />
+          <button className="btn-volver" onClick={() => setSeleccionado(null)}>
+            ⬅️ Volver a proyectos
+          </button>
+        </>
+      ) : (
+        <>
+          <h2 className="lista-title">Proyectos Disponibles</h2>
+          <input
+            type="text"
+            placeholder="Buscar proyecto..."
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+            className="input-busqueda"
+          />
 
-      {/* Campo de búsqueda */}
-      <input
-        type="text"
-        placeholder="Buscar proyecto..."
-        value={busqueda}
-        onChange={(e) => setBusqueda(e.target.value)}
-        className="input-busqueda"
-      />
-
-      <div className="cards">
-        {proyectosFiltrados.map((p) => (
-          <div key={p.id} className="card">
-            <div className="card-header">
-              <h3>{p.titulo}</h3>
-            </div>
-            <div className="card-body">
-              <p>
-                <strong>Categoría:</strong> {p.categoria}
-              </p>
-              <p>
-                <strong>Estado:</strong> {p.estado}
-              </p>
-            </div>
-            {/* Botón eliminar */}
-            <button
-              className="btn-eliminar"
-              onClick={() => eliminarProyecto(p.id)}
-            >
-              🗑️ Eliminar Proyecto
-            </button>
+          <div className="cards">
+            {proyectosFiltrados.map((p) => (
+              <ProyectoCard
+                key={p.id}
+                proyecto={p}
+                onEliminar={eliminarProyecto}
+                onVerDetalle={setSeleccionado}
+              />
+            ))}
           </div>
-        ))}
-      </div>
 
-      <button className="btn-agregar" onClick={agregarEjemplo}>
-        ➕ Agregar Proyecto
-      </button>
+          
+        </>
+      )}
     </main>
   );
 };
