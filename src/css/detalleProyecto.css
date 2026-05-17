@@ -1,40 +1,86 @@
-.project-detail {
-    background: white;
-    padding: 1.5rem;
-    margin: 1.5rem auto;
-    max-width: 700px;
-    border-radius: 8px;
-    color: var(--texto);
+/* Título del detalle */
+.detalle-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--violeta-oscuro);
+  margin-bottom: 1.2rem;
 }
 
-.project-detail h1 {
-    color: var(--violeta-oscuro);
-    border-bottom: 2px solid var(--violeta-medio);
+.detalle-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--violeta-medio);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.detail-section h2 {
-    color: var(--violeta-medio);
-    margin-top: 1.5rem;
+/* Fila de título */
+.detalle-titulo {
+  background: var(--violeta-oscuro);
+  color: white;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 1rem;
 }
 
-.detail-section a {
-    color: var(--violeta-medio);
-    font-weight: bold;
+/* Columna izquierda */
+.detalle-table th {
+  background: var(--violeta-medio);
+  color: white;
+  text-align: left;
+  padding: 1rem;
+  width: 25%;
+  vertical-align: top;
 }
 
-.team-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Columna derecha */
+.detalle-table td {
+  padding: 1rem;
+  color: var(--violeta-oscuro);
+  background: var(--violeta-claro);
 }
 
-.team-table th {
-    background: var(--violeta-medio);
-    color: white;
-    padding: 0.5rem;
-    text-align: left;
+/* Links de recursos */
+.detalle-table a {
+  color: var(--violeta-oscuro);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.team-table td {
-    padding: 0.5rem;
-    border-bottom: 1px solid var(--violeta-claro);
+.detalle-table a:hover {
+  text-decoration: underline;
+  color: #c0392b;
+}
+
+/* Botón volver */
+.btn-volver {
+  background: linear-gradient(
+    to right,
+    var(--violeta-medio),
+    var(--violeta-oscuro)
+  );
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-volver:hover {
+  background: linear-gradient(
+    to right,
+    var(--violeta-oscuro),
+    var(--violeta-medio)
+  );
+  transform: scale(1.05);
 }

@@ -1,76 +1,63 @@
-import { useState } from "react";
-import "../css/detalleProyecto.css"
+import "../css/detalleProyecto.css";
 
-const DetalleProyecto = (props)=>{
+const DetalleProyecto = ({ proyecto }) => {
+  if (!proyecto) return null;
 
-    if (!props.proyectoSeleccionado) {
-        return (
-            <div>
-                <p>Por favor, selecciona un proyecto para ver su detalle extendido.</p>
-            </div>
-        );
-    }
+  const { titulo, descripcion, recursos, equipo } = proyecto;
 
-    return (
-        <main className="project-detail">
-            <h1>Proyecto: {props.proyectoSeleccionado.titulo}</h1>
-            <section className="detail-section">
-                <h2>Información sobre el Proyecto</h2>
-                <article>
-                    <h3>Descripción del Proyecto</h3>{props.proyectoSeleccionado.descripcionExtendida && props.proyectoSeleccionado.descripcionExtendida.map((parrafo, index) => (
-                        <p key={index}>{parrafo}</p>
-                    ))}
-                </article>
-            </section>
+  return (
+    <section className="detalle">
+      <table className="detalle-table">
+        <tbody>
+          {/* Fila de título */}
+          <tr>
+            <td colSpan="2" className="detalle-titulo">
+              {titulo}
+            </td>
+          </tr>
 
-            <section className="detail-section">
-                <h2>Lista de Recursos</h2>
-                <ul>
-                    {props.proyectoSeleccionado.recursos?.drive && (
-                        <li>
-                            <a href={props.proyectoSeleccionado.recursos.drive} target="_blank">
-                                (Ver Documento en Drive)
-                            </a>
-                        </li>
-                    )}
-                    {props.proyectoSeleccionado.recursos?.pdf && (
-                        <li>
-                            <a href={props.proyectoSeleccionado.recursos.pdf} target="_blank">
-                                (Ver Documento en PDF)
-                            </a>
-                        </li>
-                    )}
-                    {props.proyectoSeleccionado.recursos?.github && (
-                        <li>
-                            <a href={props.proyectoSeleccionado.recursos.github} target="_blank">
-                                (Ver Enlace a GitHub)
-                            </a>
-                        </li>
-                    )}
-                </ul>
-            </section>
+          {/* Descripción */}
+          <tr>
+            <th>Descripción</th>
+            <td>
+              <p>{descripcion.parrafo1}</p>
+              <p>{descripcion.parrafo2}</p>
+            </td>
+          </tr>
 
-            <section className="detail-section">
-                <h2>Equipo involucrado</h2>
-                <table className="team-table">
-                    <thead>
-                        <tr>
-                            <th>Nombre del Integrante</th>
-                            <th>Rol</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {props.proyectoSeleccionado.equipo && 
-                        props.proyectoSeleccionado.equipo.map((integrante, index) => (
-                            <tr key={index}>
-                                <td>{integrante.nombre}</td>
-                                <td>{integrante.rol}</td>
-                            </tr>))} 
-                    </tbody>
-                </table>
-            </section>
-        </main>
-    );
+          {/* Recursos */}
+          <tr>
+            <th>Recursos</th>
+            <td>
+              <ul>
+                {recursos.map((r, i) => (
+                  <li key={i}>
+                    <a href="#" onClick={(e) => e.preventDefault()}>
+                      {r.nombre}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+
+          {/* Equipo */}
+          <tr>
+            <th>Equipo</th>
+            <td>
+              <ul>
+                {equipo.map((m, i) => (
+                  <li key={i}>
+                    {m.nombre} - {m.rol}
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  );
 };
 
 export default DetalleProyecto;
