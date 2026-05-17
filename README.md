@@ -31,28 +31,35 @@ de proyecto individual.
 El objetivo principal es mostrar el **Listado de Proyectos** como contenido central de la página, manteniendo una estructura clara y reutilizable.    
 
 ### Distribución de tareas del grupo 18
-Goyochea Kevin:
-  TP3 - Parte 1:
-  - **ListaProyectos.jsx** 
-  - **buscarProyecto**
-  TP3 - Parte 2:
-  - Actualizar el archivo **ListaProyectos.jsx**  
-Medina Brisa Lourdes:
-  TP3 - Parte 1:
-  - **Header.jsx**
-  - **eliminarProyecto**
-  TP3 - Parte 2:
-  - **DetalleProyecto.jsx**
-Sivila Emilce Andrea:
-  TP3 - Parte 1:
-  - **Crear Plantilla de React**
-  - **Nav.jsx**
-  - **Footer.jsx**  
-  - **agregarProyecto**
-  - **obtenerProyectos**
-  TP3 - Parte 2:
-  - **ProyectoCard.jsx**
-Tareas en común: editar archivos de estilos de la carpeta **css**, el archivo **proyectoService.js** de la carpeta **services** y el archivo **App.jsx** 
+
+- **Goyochea Kevin**
+  - **TP3 - Parte 1**
+    - ListaProyectos.jsx
+    - buscarProyecto
+  - **TP3 - Parte 2**
+    - Actualizar el archivo ListaProyectos.jsx
+
+- **Medina Brisa Lourdes**
+  - **TP3 - Parte 1**
+    - Header.jsx
+    - eliminarProyecto
+  - **TP3 - Parte 2**
+    - DetalleProyecto.jsx
+
+- **Sivila Emilce Andrea**
+  - **TP3 - Parte 1**
+    - Crear Plantilla de React
+    - Nav.jsx
+    - Footer.jsx
+    - agregarProyecto
+    - obtenerProyectos
+  - **TP3 - Parte 2**
+    - ProyectoCard.jsx
+
+- **Tareas en común**
+  - Edición de archivos de estilos en la carpeta **css**
+  - Edición del archivo **proyectoService.js** en la carpeta **services**
+  - Edición del archivo **App.jsx** 
 
 ## React + Vite
 
