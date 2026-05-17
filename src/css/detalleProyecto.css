@@ -1,0 +1,40 @@
+.project-detail {
+    background: white;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 700px;
+    border-radius: 8px;
+    color: var(--texto);
+}
+
+.project-detail h1 {
+    color: var(--violeta-oscuro);
+    border-bottom: 2px solid var(--violeta-medio);
+}
+
+.detail-section h2 {
+    color: var(--violeta-medio);
+    margin-top: 1.5rem;
+}
+
+.detail-section a {
+    color: var(--violeta-medio);
+    font-weight: bold;
+}
+
+.team-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.team-table th {
+    background: var(--violeta-medio);
+    color: white;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.team-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--violeta-claro);
+}
