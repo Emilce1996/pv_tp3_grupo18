@@ -1,8 +1,7 @@
-# Trabajo Práctico Nº3 – React – Parte 1 
+# Trabajo Práctico Nº3 – React – Parte 1 – Parte 2 
 
 ## Integrantes del Grupo 18
 - Goyochea Kevin – [@KevinGoyochea](https://github.com/KevinGoyochea)
-- Maidana Agustin Hugo Franco – [@TellmeKubson](https://github.com/TellmeKubson)
 - Medina Brisa Lourdes – [@xLouux](https://github.com/usuarioGithub)
 - Sivila Emilce Andrea – [@Emilce1996](https://github.com/Emilce1996)
 
@@ -16,8 +15,12 @@ La página de gestión de proyectos educativos se organiza con una estructura ba
 
 - **Header.jsx**: Renderiza el encabezado del sitio.  
 - **Nav.jsx**: Renderiza la barra de navegación. En esta etapa, los enlaces son estáticos y no redirigen a otras pestañas, ya que el contenido principal es el listado de proyectos.  
-- **ListaProyectos.jsx**: Renderiza la lista de proyectos, permitiendo gestionar las acciones de agregar, eliminar y buscar.  
-- **Footer.jsx**: Renderiza el pie de página.  
+- **ListaProyectos.jsx**: Renderiza la lista de proyectos, permitiendo gestionar las acciones de agregar, eliminar y buscar.
+Se actualiza para llamar a los nuevos componentes DetalleProyecto.jsx y ProyectoCard.jsx; más un formulario para agregar nuevos proyectos.  
+- **Footer.jsx**: Renderiza el pie de página.
+- **DetalleProyecto.jsx**: muestra la descripción extendida, la lista de recursos (PDF, Drive, GitHub) y la sección de equipo con nombres y roles. 
+- **ProyectoCard.jsx**: representar una tarjeta 
+de proyecto individual.
 
 ### Funcionalidades implementadas
 - **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
@@ -27,14 +30,36 @@ La página de gestión de proyectos educativos se organiza con una estructura ba
 
 El objetivo principal es mostrar el **Listado de Proyectos** como contenido central de la página, manteniendo una estructura clara y reutilizable.    
 
-### Estilos aplicados
-Se utilizaron las tres formas de CSS:
-  - **Inline CSS**: aplicado en algunos encabezados para demostrar su uso.  
-  - **Internal CSS**: pequeños bloques dentro del `<head>` de páginas específicas.  
-  - **External CSS**: archivo central `css/styles.css` con la mayor parte de los estilos.  
-- Uso de **Grid y Flexbox** para organizar el layout.  
-- Variables CSS en `:root` para colores y tipografía.  
-- Estados interactivos (`:hover`, `:focus`, `:active`) en botones y enlaces.  
+### Distribución de tareas del grupo 18
+
+- **Goyochea Kevin**
+  - **TP3 - Parte 1**
+    - ListaProyectos.jsx
+    - buscarProyecto
+  - **TP3 - Parte 2**
+    - Actualizar el archivo ListaProyectos.jsx
+
+- **Medina Brisa Lourdes**
+  - **TP3 - Parte 1**
+    - Header.jsx
+    - eliminarProyecto
+  - **TP3 - Parte 2**
+    - DetalleProyecto.jsx
+
+- **Sivila Emilce Andrea**
+  - **TP3 - Parte 1**
+    - Crear Plantilla de React
+    - Nav.jsx
+    - Footer.jsx
+    - agregarProyecto
+    - obtenerProyectos
+  - **TP3 - Parte 2**
+    - ProyectoCard.jsx
+
+- **Tareas en común**
+  - Edición de archivos de estilos en la carpeta **css**
+  - Edición del archivo **proyectoService.js** en la carpeta **services**
+  - Edición del archivo **App.jsx** 
 
 ## React + Vite
 

@@ -4,7 +4,9 @@ import ProyectoCard from "./ProyectoCard";
 import DetalleProyecto from "./DetalleProyecto";
 
 const ListaProyectos = () => {
-  const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
+  const [proyectos, setProyectos] = useState(
+    proyectoService.obtenerProyectos(),
+  );
   const [busqueda, setBusqueda] = useState("");
   const [seleccionado, setSeleccionado] = useState(null);
 
@@ -129,3 +131,4 @@ const ListaProyectos = () => {
 };
 
 export default ListaProyectos;
+
