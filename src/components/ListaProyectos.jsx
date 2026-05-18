@@ -22,7 +22,7 @@ const ListaProyectos = () => {
 
   // Filtrado directo sobre el estado
   const proyectosFiltrados = proyectos.filter((p) =>
-    p.titulo.toLowerCase().includes(busqueda.toLowerCase())
+    p.titulo.toLowerCase().includes(busqueda.toLowerCase()),
   );
 
   const handleAgregarProyecto = (e) => {
@@ -83,18 +83,7 @@ const ListaProyectos = () => {
             className="input-busqueda"
           />
 
-          <div className="cards">
-            {proyectosFiltrados.map((p) => (
-              <ProyectoCard
-                key={p.id}
-                proyecto={p}
-                onEliminar={eliminarProyecto}
-                onVerDetalle={setSeleccionado}
-              />
-            ))}
-          </div>
-
-          {/* Formulario integrado */}
+          {/* Formulario debajo del buscador */}
           <form className="form-proyecto" onSubmit={handleAgregarProyecto}>
             <h3 className="form-title">Agregar Nuevo Proyecto</h3>
 
@@ -114,7 +103,10 @@ const ListaProyectos = () => {
               required
             />
 
-            <select value={estado} onChange={({ target: { value } }) => setEstado(value)}>
+            <select
+              value={estado}
+              onChange={({ target: { value } }) => setEstado(value)}
+            >
               <option value="En progreso">En progreso</option>
               <option value="Finalizado">Finalizado</option>
               <option value="Pendiente">Pendiente</option>
@@ -124,6 +116,18 @@ const ListaProyectos = () => {
               Guardar proyecto
             </button>
           </form>
+
+          {/* Cards debajo del formulario */}
+          <div className="cards">
+            {proyectosFiltrados.map((p) => (
+              <ProyectoCard
+                key={p.id}
+                proyecto={p}
+                onEliminar={eliminarProyecto}
+                onVerDetalle={setSeleccionado}
+              />
+            ))}
+          </div>
         </>
       )}
     </main>
@@ -131,4 +135,3 @@ const ListaProyectos = () => {
 };
 
 export default ListaProyectos;
-
