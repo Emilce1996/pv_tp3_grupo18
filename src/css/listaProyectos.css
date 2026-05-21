@@ -258,3 +258,24 @@
 .btn-agregar:active {
   transform: scale(0.95); 
 }
+
+/* estilo del Registro de Actividad*/
+.registro-actividad {
+  display: flex;
+  padding: 2px;
+  width: 380px;
+  background-color: rgba(213, 143, 248, 0.54); 
+  border-radius: 6px;
+  border-left: 3px solid #8536e6; /* Barritsa azul discreta */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.451);
+}
+
+/* Texto dentro del Registro de Actividad */
+.registro-actividad p {
+  margin: 5px;
+  color: #42474b;
+  font-family:'Segoe UI', sans-serif;
+  font-size: 0.7rem; 
+  font-weight: 500;
+  white-space: nowrap;
+}

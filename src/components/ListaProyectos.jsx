@@ -1,7 +1,8 @@
 import proyectoService from "../services/proyectoService";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProyectoCard from "./ProyectoCard";
 import DetalleProyecto from "./DetalleProyecto";
+import RegistroActividad from "./RegistroActividad";
 
 const ListaProyectos = () => {
   const [proyectos, setProyectos] = useState(
@@ -10,14 +11,32 @@ const ListaProyectos = () => {
   const [busqueda, setBusqueda] = useState("");
   const [seleccionado, setSeleccionado] = useState(null);
 
+  //Actualizacion de fecha
+const [fechaActualizacion, setFechaActualizacion] = useState(null);
+
   // Estados del formulario
   const [titulo, setTitulo] = useState("");
   const [categoria, setCategoria] = useState("");
   const [estado, setEstado] = useState("En progreso");
 
+  useEffect(() => {
+    const ahora = new Date();
+    
+    const dia = String(ahora.getDate()).padStart(2, "0");
+    const mes = String(ahora.getMonth() + 1).padStart(2, "0");
+    const anio = ahora.getFullYear();
+    const horas = String(ahora.getHours()).padStart(2, "0");
+    const minutos = String(ahora.getMinutes()).padStart(2, "0");
+
+    let fecha = `${dia}/${mes}/${anio} a las ${horas}:${minutos}`;
+    
+    console.log(fecha);
+    setFechaActualizacion(fecha);
+  }, [proyectos]);
+
   const eliminarProyecto = (id) => {
     proyectoService.eliminarProyecto(id);
-    setProyectos(proyectoService.obtenerProyectos());
+    setProyectos([...proyectoService.obtenerProyectos()]);
   };
 
   // Filtrado directo sobre el estado
@@ -52,9 +71,9 @@ const ListaProyectos = () => {
         { nombre: "Emilce Sivila", rol: "Backend" },
       ],
     };
-
+    
     proyectoService.agregarProyecto(nuevo);
-    setProyectos(proyectoService.obtenerProyectos());
+    setProyectos([...proyectoService.obtenerProyectos()]);
 
     // Resetear formulario
     setTitulo("");
@@ -128,6 +147,8 @@ const ListaProyectos = () => {
               />
             ))}
           </div>
+          {/*visualizacion de la ultima actualizacion de la lista*/}
+          <RegistroActividad fecha={fechaActualizacion} />
         </>
       )}
     </main>
