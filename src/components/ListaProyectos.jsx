@@ -1,10 +1,14 @@
 import proyectoService from "../services/proyectoService";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ProyectoCard from "./ProyectoCard";
 import DetalleProyecto from "./DetalleProyecto";
+import RegistroActividad from "./RegistroActividad";
 
 const ListaProyectos = () => {
-  const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos());
+  const [proyectos, setProyectos] = useState(
+    proyectoService.obtenerProyectos()
+  );
+
   const [busqueda, setBusqueda] = useState("");
   const [seleccionado, setSeleccionado] = useState(null);
 
@@ -13,18 +17,37 @@ const ListaProyectos = () => {
   const [categoria, setCategoria] = useState("");
   const [estado, setEstado] = useState("En progreso");
 
+  // Estado para guardar la última actualización
+  const [ultimaActualizacion, setUltimaActualizacion] = useState(null);
+
+  // useRef para evitar la primera ejecución
+  const primeraCarga = useRef(true);
+
+  // useEffect SOLO para cambios en proyectos
+  useEffect(() => {
+    // Evitar render inicial
+    if (primeraCarga.current) {
+      primeraCarga.current = false;
+      return;
+    }
+
+    // Actualizar fecha y hora
+    setUltimaActualizacion(new Date());
+  }, [proyectos]¡);
+
   const eliminarProyecto = (id) => {
     proyectoService.eliminarProyecto(id);
     setProyectos(proyectoService.obtenerProyectos());
   };
 
-  // Filtrado directo sobre el estado
+  // Filtrado
   const proyectosFiltrados = proyectos.filter((p) =>
     p.titulo.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   const handleAgregarProyecto = (e) => {
     e.preventDefault();
+
     if (!titulo.trim() || !categoria.trim()) {
       alert("Completa todos los campos antes de guardar");
       return;
@@ -52,9 +75,10 @@ const ListaProyectos = () => {
     };
 
     proyectoService.agregarProyecto(nuevo);
+
     setProyectos(proyectoService.obtenerProyectos());
 
-    // Resetear formulario
+    // Reset formulario
     setTitulo("");
     setCategoria("");
     setEstado("En progreso");
@@ -65,14 +89,20 @@ const ListaProyectos = () => {
       {seleccionado ? (
         <>
           <h2 className="detalle-title">Detalles del Proyecto</h2>
+
           <DetalleProyecto proyecto={seleccionado} />
-          <button className="btn-volver" onClick={() => setSeleccionado(null)}>
+
+          <button
+            className="btn-volver"
+            onClick={() => setSeleccionado(null)}
+          >
             ⬅️ Volver a proyectos
           </button>
         </>
       ) : (
         <>
           <h2 className="lista-title">Proyectos Disponibles</h2>
+
           <input
             type="text"
             placeholder="Buscar proyecto..."
@@ -80,6 +110,11 @@ const ListaProyectos = () => {
             onChange={({ target: { value } }) => setBusqueda(value)}
             className="input-busqueda"
           />
+
+          {/* RegistroActividad SOLO aparece después de agregar/eliminar */}
+          {ultimaActualizacion && (
+            <RegistroActividad fecha={ultimaActualizacion} />
+          )}
 
           <div className="cards">
             {proyectosFiltrados.map((p) => (
@@ -92,7 +127,7 @@ const ListaProyectos = () => {
             ))}
           </div>
 
-          {/* Formulario integrado */}
+          {/* Formulario */}
           <form className="form-proyecto" onSubmit={handleAgregarProyecto}>
             <h3 className="form-title">Agregar Nuevo Proyecto</h3>
 
@@ -112,7 +147,10 @@ const ListaProyectos = () => {
               required
             />
 
-            <select value={estado} onChange={({ target: { value } }) => setEstado(value)}>
+            <select
+              value={estado}
+              onChange={({ target: { value } }) => setEstado(value)}
+            >
               <option value="En progreso">En progreso</option>
               <option value="Finalizado">Finalizado</option>
               <option value="Pendiente">Pendiente</option>
