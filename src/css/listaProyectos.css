@@ -1,8 +1,8 @@
 /* Titulo */
 .lista-title {
   text-align: center;
-  font-size: 1.6rem; 
-  font-weight: 600; 
+  font-size: 1.6rem;
+  font-weight: 600;
   color: var(--violeta-oscuro);
   margin-bottom: 1.2rem;
 }
@@ -93,6 +93,53 @@
   );
 }
 
+/* Campo de texto largo (descripción) */
+.form-proyecto textarea {
+  padding: 10px;
+  border: 2px solid var(--violeta-medio);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--violeta-oscuro);
+  background: #fff;
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Contenedor de integrantes */
+.integrante-fields {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border-left: 4px solid var(--violeta-medio);
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+/* Inputs de integrantes */
+.integrante-fields input {
+  margin-bottom: 0.5rem;
+  padding: 8px;
+  border: 1px solid var(--violeta-medio);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #fff;
+}
+
+.integrante-fields label {
+  font-weight: 600;
+  color: var(--violeta-oscuro);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--violeta-oscuro);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
 /* Cards */
 .cards {
   display: flex;
@@ -128,16 +175,16 @@
   );
   padding: 1rem;
   text-align: center;
-  min-height: 60px; 
+  min-height: 60px;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
 
 .card-header h3 {
   margin: 0;
   color: var(--violeta-oscuro);
-  line-height: 1.2; 
+  line-height: 1.2;
   text-align: center;
 }
 
@@ -162,7 +209,7 @@
 /* Footer de la card */
 .card-footer {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
 }
@@ -199,7 +246,7 @@
   transform: scale(0.95);
 }
 
-/* Botón Eliminar (violeta → rojo en hover) */
+/* Botón Eliminar */
 .btn-eliminar {
   background: linear-gradient(
     to right,
@@ -218,7 +265,7 @@
 }
 
 .btn-eliminar:hover {
-  background: linear-gradient(to right, #c0392b, #ff6b6b); /* rojo en hover */
+  background: linear-gradient(to right, #c0392b, #ff6b6b);
   transform: scale(1.05);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
@@ -239,7 +286,7 @@
   font-size: 1rem;
   padding: 12px 20px;
   border: none;
-  border-radius: 25px; 
+  border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -251,31 +298,10 @@
     var(--violeta-oscuro),
     var(--violeta-medio)
   );
-  transform: scale(1.05); 
+  transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .btn-agregar:active {
-  transform: scale(0.95); 
-}
-
-/* estilo del Registro de Actividad*/
-.registro-actividad {
-  display: flex;
-  padding: 2px;
-  width: 380px;
-  background-color: rgba(213, 143, 248, 0.54); 
-  border-radius: 6px;
-  border-left: 3px solid #8536e6; /* Barritsa azul discreta */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.451);
-}
-
-/* Texto dentro del Registro de Actividad */
-.registro-actividad p {
-  margin: 5px;
-  color: #42474b;
-  font-family:'Segoe UI', sans-serif;
-  font-size: 0.7rem; 
-  font-weight: 500;
-  white-space: nowrap;
+  transform: scale(0.95);
 }

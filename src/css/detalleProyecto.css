@@ -38,7 +38,7 @@
   vertical-align: top;
 }
 
-/* Columna derecha */
+/* Columna derecha: fondo uniforme */
 .detalle-table td {
   padding: 1rem;
   color: var(--violeta-oscuro);
@@ -55,6 +55,47 @@
 .detalle-table a:hover {
   text-decoration: underline;
   color: #c0392b;
+}
+
+/* Recursos */
+.btn-recurso {
+  background: var(--violeta-claro);
+  color: var(--violeta-oscuro);
+  font-weight: 600;
+  border: 2px solid var(--violeta-medio);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-recurso:hover {
+  background: var(--violeta-medio);
+  color: white;
+}
+
+/* Equipo */
+.detalle-equipo {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detalle-equipo li {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: var(--violeta-oscuro);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.equipo-nombre {
+  font-weight: 600;
+}
+
+.equipo-rol {
+  font-style: italic;
+  color: var(--violeta-medio);
 }
 
 /* Botón volver */
@@ -83,4 +124,11 @@
     var(--violeta-medio)
   );
   transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .detalle-table {
+    width: 95%; 
+    font-size: 0.9rem;
+  }
 }

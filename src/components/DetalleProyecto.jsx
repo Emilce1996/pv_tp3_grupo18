@@ -29,12 +29,15 @@ const DetalleProyecto = ({ proyecto }) => {
           <tr>
             <th>Recursos</th>
             <td>
-              <ul>
+              <ul className="detalle-recursos">
                 {recursos.map((r, i) => (
                   <li key={i}>
-                    <a href="#" onClick={(e) => e.preventDefault()}>
-                      {r.nombre}
-                    </a>
+                    <button
+                      className="btn-recurso"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      📂 {r.nombre}
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -45,10 +48,14 @@ const DetalleProyecto = ({ proyecto }) => {
           <tr>
             <th>Equipo</th>
             <td>
-              <ul>
+              <ul className="detalle-equipo">
                 {equipo.map((m, i) => (
                   <li key={i}>
-                    {m.nombre} - {m.rol}
+                    👥{" "}
+                    <span className="equipo-nombre">
+                      {m.nombre} {m.apellido}
+                    </span>
+                    <span className="equipo-rol"> - {m.rol}</span>
                   </li>
                 ))}
               </ul>
