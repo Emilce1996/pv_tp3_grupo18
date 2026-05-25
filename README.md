@@ -1,4 +1,4 @@
-# Trabajo Práctico Nº3 – React – Parte 1 – Parte 2 
+# Trabajo Práctico Nº3 – React – Parte 1 – 2 – 3 
 
 ## Integrantes del Grupo 18
 - Goyochea Kevin – [@KevinGoyochea](https://github.com/KevinGoyochea)
@@ -16,11 +16,14 @@ La página de gestión de proyectos educativos se organiza con una estructura ba
 - **Header.jsx**: Renderiza el encabezado del sitio.  
 - **Nav.jsx**: Renderiza la barra de navegación. En esta etapa, los enlaces son estáticos y no redirigen a otras pestañas, ya que el contenido principal es el listado de proyectos.  
 - **ListaProyectos.jsx**: Renderiza la lista de proyectos, permitiendo gestionar las acciones de agregar, eliminar y buscar.
-Se actualiza para llamar a los nuevos componentes DetalleProyecto.jsx y ProyectoCard.jsx; más un formulario para agregar nuevos proyectos.  
+Se actualiza para llamar a los nuevos componentes DetalleProyecto.jsx y ProyectoCard.jsx; más un formulario para agregar nuevos proyectos.
+Se implementa useEffect y se refactoriza el componente para utilizar RegistroActividad.jsx y FormularioProyecto.jsx cumpliendo las condiciones solicitadas.
 - **Footer.jsx**: Renderiza el pie de página.
-- **DetalleProyecto.jsx**: muestra la descripción extendida, la lista de recursos (PDF, Drive, GitHub) y la sección de equipo con nombres y roles. 
-- **ProyectoCard.jsx**: representar una tarjeta 
+- **DetalleProyecto.jsx**: Muestra la descripción extendida, la lista de recursos (PDF, Drive, GitHub) y la sección de equipo con nombres y roles. 
+- **ProyectoCard.jsx**: Representar una tarjeta 
 de proyecto individual.
+- **RegistroActividad.jsx**: Muestra de forma clara al usuario cuándo ocurrió la última modificación en el arreglo de proyectos.
+- **FormularioProyecto.jsx**: Representa el formulario para agregar proyectos en un componente individual.
 
 ### Funcionalidades implementadas
 - **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
@@ -38,6 +41,8 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - buscarProyecto
   - **TP3 - Parte 2**
     - Actualizar el archivo ListaProyectos.jsx
+  - **TP3 - Parte 3**
+    - Refactorizar el archivo ListaProyectos.jsx
 
 - **Medina Brisa Lourdes**
   - **TP3 - Parte 1**
@@ -45,6 +50,8 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - eliminarProyecto
   - **TP3 - Parte 2**
     - DetalleProyecto.jsx
+  - **TP3 - Parte 3**
+    - RegistroActividad.jsx
 
 - **Sivila Emilce Andrea**
   - **TP3 - Parte 1**
@@ -55,6 +62,8 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - obtenerProyectos
   - **TP3 - Parte 2**
     - ProyectoCard.jsx
+  - **TP3 - Parte 3**
+    - FormularioProyecto.jsx
 
 - **Tareas en común**
   - Edición de archivos de estilos en la carpeta **css**

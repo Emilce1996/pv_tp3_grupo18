@@ -1,8 +1,9 @@
 import proyectoService from "../services/proyectoService";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ProyectoCard from "./ProyectoCard";
 import DetalleProyecto from "./DetalleProyecto";
 import RegistroActividad from "./RegistroActividad";
+import FormularioProyecto from "./FormularioProyecto";
 
 const ListaProyectos = () => {
   const [proyectos, setProyectos] = useState(
@@ -10,75 +11,84 @@ const ListaProyectos = () => {
   );
   const [busqueda, setBusqueda] = useState("");
   const [seleccionado, setSeleccionado] = useState(null);
+  const [ultimaActualizacion, setUltimaActualizacion] = useState("");
+  const [historialAcciones, setHistorialAcciones] = useState([]);
 
-  //Actualizacion de fecha
-const [fechaActualizacion, setFechaActualizacion] = useState(null);
-
-  // Estados del formulario
-  const [titulo, setTitulo] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [estado, setEstado] = useState("En progreso");
-
-  useEffect(() => {
+  const actualizarRegistro = () => {
     const ahora = new Date();
-    
     const dia = String(ahora.getDate()).padStart(2, "0");
     const mes = String(ahora.getMonth() + 1).padStart(2, "0");
     const anio = ahora.getFullYear();
     const horas = String(ahora.getHours()).padStart(2, "0");
     const minutos = String(ahora.getMinutes()).padStart(2, "0");
 
-    let fecha = `${dia}/${mes}/${anio} a las ${horas}:${minutos}`;
-    
-    console.log(fecha);
-    setFechaActualizacion(fecha);
-  }, [proyectos]);
-
-  const eliminarProyecto = (id) => {
-    proyectoService.eliminarProyecto(id);
-    setProyectos([...proyectoService.obtenerProyectos()]);
+    const formato = `Última actualización de la lista: ${dia}/${mes}/${anio} a las ${horas}:${minutos} hs.`;
+    setUltimaActualizacion(formato);
   };
 
-  // Filtrado directo sobre el estado
-  const proyectosFiltrados = proyectos.filter((p) =>
-    p.titulo.toLowerCase().includes(busqueda.toLowerCase()),
-  );
+  // bandera para evitar la primera ejecución del useEffect
+  const isFirstRender = useRef(true);
 
-  const handleAgregarProyecto = (e) => {
-    e.preventDefault();
-    if (!titulo.trim() || !categoria.trim()) {
-      alert("Completa todos los campos antes de guardar");
+  const eliminarProyecto = (id) => {
+    const proyectoEliminado = proyectos.find((p) => p.id === id);
+    proyectoService.eliminarProyecto(id);
+    setProyectos(proyectoService.obtenerProyectos());
+
+    // Registro de acción
+    setHistorialAcciones((prev) => [
+      ...prev,
+      {
+        tipo: "Eliminado",
+        titulo: proyectoEliminado?.titulo,
+        fecha: new Date().toLocaleString(),
+      },
+    ]);
+
+    actualizarRegistro();
+  };
+
+  const proyectosFiltrados = busqueda
+    ? proyectoService.buscarProyecto(busqueda)
+    : proyectos;
+
+  // efecto que se dispara solo cuando cambia proyectos
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
       return;
     }
 
-    const nuevo = {
-      id: Date.now(),
-      titulo,
-      categoria,
-      estado,
-      descripcion: {
-        parrafo1:
-          "React es una biblioteca JavaScript de código abierto para construir interfaces de usuario...",
-        parrafo2:
-          "Su objetivo principal es minimizar errores al construir interfaces mediante componentes reutilizables...",
-      },
-      recursos: [
-        { nombre: "Documento PDF", href: "#" },
-        { nombre: "Repositorio GitHub", href: "#" },
-      ],
-      equipo: [
-        { nombre: "Lourdes Medina", rol: "Frontend" },
-        { nombre: "Emilce Sivila", rol: "Backend" },
-      ],
-    };
-    
-    proyectoService.agregarProyecto(nuevo);
-    setProyectos([...proyectoService.obtenerProyectos()]);
+    if (proyectos.length >= 0) {
+      setTimeout(() => {
+        const ahora = new Date();
+        const dia = String(ahora.getDate()).padStart(2, "0");
+        const mes = String(ahora.getMonth() + 1).padStart(2, "0");
+        const anio = ahora.getFullYear();
+        const horas = String(ahora.getHours()).padStart(2, "0");
+        const minutos = String(ahora.getMinutes()).padStart(2, "0");
 
-    // Resetear formulario
-    setTitulo("");
-    setCategoria("");
-    setEstado("En progreso");
+        const formato = `Última actualización de la lista: ${dia}/${mes}/${anio} a las ${horas}:${minutos} hs.`;
+        setUltimaActualizacion(formato);
+      }, 0);
+    }
+  }, [proyectos]);
+
+  // callback que recibe el nuevo proyecto desde FormularioProyecto
+  const handleGuardarProyecto = (nuevoProyecto) => {
+    proyectoService.agregarProyecto(nuevoProyecto);
+    setProyectos(proyectoService.obtenerProyectos());
+
+    // Registro de acción
+    setHistorialAcciones((prev) => [
+      ...prev,
+      {
+        tipo: "Agregado",
+        titulo: nuevoProyecto.titulo,
+        fecha: new Date().toLocaleString(),
+      },
+    ]);
+
+    actualizarRegistro();
   };
 
   return (
@@ -94,47 +104,18 @@ const [fechaActualizacion, setFechaActualizacion] = useState(null);
       ) : (
         <>
           <h2 className="lista-title">Proyectos Disponibles</h2>
+
+          {/* Buscador */}
           <input
             type="text"
             placeholder="Buscar proyecto..."
             value={busqueda}
-            onChange={({ target: { value } }) => setBusqueda(value)}
+            onChange={(e) => setBusqueda(e.target.value)}
             className="input-busqueda"
           />
 
-          {/* Formulario debajo del buscador */}
-          <form className="form-proyecto" onSubmit={handleAgregarProyecto}>
-            <h3 className="form-title">Agregar Nuevo Proyecto</h3>
-
-            <input
-              type="text"
-              placeholder="Título del proyecto"
-              value={titulo}
-              onChange={({ target: { value } }) => setTitulo(value)}
-              required
-            />
-
-            <input
-              type="text"
-              placeholder="Categoría (ej: Web, Móvil)"
-              value={categoria}
-              onChange={({ target: { value } }) => setCategoria(value)}
-              required
-            />
-
-            <select
-              value={estado}
-              onChange={({ target: { value } }) => setEstado(value)}
-            >
-              <option value="En progreso">En progreso</option>
-              <option value="Finalizado">Finalizado</option>
-              <option value="Pendiente">Pendiente</option>
-            </select>
-
-            <button type="submit" className="btn-agregar">
-              Guardar proyecto
-            </button>
-          </form>
+          {/* Formulario independiente */}
+          <FormularioProyecto onGuardar={handleGuardarProyecto} />
 
           {/* Cards debajo del formulario */}
           <div className="cards">
@@ -147,8 +128,31 @@ const [fechaActualizacion, setFechaActualizacion] = useState(null);
               />
             ))}
           </div>
-          {/*visualizacion de la ultima actualizacion de la lista*/}
-          <RegistroActividad fecha={fechaActualizacion} />
+
+          {/* Registro de actividad */}
+          {ultimaActualizacion && (
+            <RegistroActividad ultimaActualizacion={ultimaActualizacion} />
+          )}
+          {historialAcciones.length > 0 && (
+            <table className="tabla-historial">
+              <thead>
+                <tr>
+                  <th>Acción</th>
+                  <th>Proyecto</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                {historialAcciones.map((accion, index) => (
+                  <tr key={index}>
+                    <td>{accion.tipo}</td>
+                    <td>{accion.titulo}</td>
+                    <td>{accion.fecha}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </>
       )}
     </main>
