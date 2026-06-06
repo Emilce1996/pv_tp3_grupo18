@@ -1,7 +1,7 @@
 import proyectoService from "../services/proyectoService";
 import { useState, useEffect, useRef } from "react";
 import ProyectoCard from "../components/ProyectoCard";
-import DetalleProyecto from "./DetalleProyecto";
+import DetalleProyecto from "../views/DetalleProyecto";
 import RegistroActividad from "../components/RegistroActividad";
 import FormularioProyecto from "../components/FormularioProyecto";
 
