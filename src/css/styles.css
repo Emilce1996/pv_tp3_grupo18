@@ -72,29 +72,25 @@ nav a:active {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Tabla Registro de Actividad */
-.tabla-historial {
-  width: 90%;
-  margin: 1rem auto;
-  border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Tabla historial */
+.table {
   border: 2px solid var(--violeta-medio);
   border-radius: 8px;
   overflow: hidden;
 }
 
-.tabla-historial th {
-  background: var(--violeta-medio);
+.table thead th {
+  background-color: var(--violeta-medio);
   color: white;
-  padding: 0.8rem;
   text-align: center;
+  font-weight: bold;
 }
 
-.tabla-historial td {
-  background: var(--violeta-claro);
+.table tbody td {
+  background-color: var(--violeta-claro);
   color: var(--violeta-oscuro);
-  padding: 0.8rem;
   text-align: center;
+  padding: 0.8rem;
 }
 
 /* Footer */
@@ -120,6 +116,45 @@ nav a:active {
   color: var(--violeta-oscuro);
   font-weight: bold;
   font-size: 1rem;
+}
+
+/* Perfil Usuario */
+.perfil-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    var(--violeta-medio),
+    var(--violeta-claro),
+    var(--violeta-medio)
+  );
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.perfil-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.perfil-list .list-group-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--violeta-oscuro);
+  margin-bottom: 0.5rem;
+}
+
+.perfil-list strong {
+  color: var(--violeta-oscuro);
+  margin-right: 0.5rem;
 }
 
 @media (max-width: 768px) {

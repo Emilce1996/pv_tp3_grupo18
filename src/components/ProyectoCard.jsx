@@ -1,28 +1,31 @@
-const ProyectoCard = ({ proyecto, onEliminar, onVerDetalle }) => {
+import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+const ProyectoCard = ({ proyecto, onEliminar }) => {
   const { id, titulo, categoria, estado } = proyecto;
 
   return (
-    <div className="card">
-      <div className="card-header">
+    <Card className="mb-3 proyecto-card">
+      <Card.Header>
         <h3>{titulo}</h3>
-      </div>
-      <div className="card-body">
+      </Card.Header>
+      <Card.Body>
         <p>
           <strong>Categoría:</strong> {categoria}
         </p>
         <p>
           <strong>Estado:</strong> {estado}
         </p>
-      </div>
-      <div className="card-footer">
-        <button className="btn-detalle" onClick={() => onVerDetalle(proyecto)}>
-          Ver detalle
-        </button>
-        <button className="btn-eliminar" onClick={() => onEliminar(id)}>
-          🗑️
-        </button>
-      </div>
-    </div>
+      </Card.Body>
+      <Card.Footer>
+        <Link to={`/proyectos/${id}`}>
+          <Button className="btn-detalle">Ver detalle</Button>
+        </Link>
+        <Button className="btn-eliminar" onClick={() => onEliminar(id)}>
+          🗑️ Eliminar
+        </Button>
+      </Card.Footer>
+    </Card>
   );
 };
 

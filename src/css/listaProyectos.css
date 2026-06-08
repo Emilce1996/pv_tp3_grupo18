@@ -37,38 +37,59 @@
 }
 
 /* Formulario */
-.form-proyecto {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* Contenedor del formulario */
+.formulario-container {
+  max-width: 1000px;
   margin: 2rem auto;
-  max-width: 400px;
-  background: var(--violeta-claro);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  padding: 2rem 3rem;
+  background: linear-gradient(
+    to right,
+    var(--violeta-medio),
+    var(--violeta-claro),
+    var(--violeta-medio)
+  );
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.form-title {
+/* Título */
+.formulario-title {
   text-align: center;
   font-size: 1.4rem;
   font-weight: bold;
   color: var(--violeta-oscuro);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.form-proyecto input,
-.form-proyecto select {
-  padding: 10px;
+/* Labels */
+.form-label {
+  font-weight: 600;
+  color: var(--violeta-oscuro);
+}
+
+/* Inputs y selects */
+.form-control,
+.form-select {
   border: 2px solid var(--violeta-medio);
   border-radius: 8px;
   font-size: 1rem;
   color: var(--violeta-oscuro);
   background: #fff;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
-.form-proyecto button {
-  align-self: center;
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--violeta-oscuro);
+  box-shadow: 0 0 8px rgba(75, 0, 130, 0.3);
+}
+
+/* Botón */
+.btn-guardar {
+  display: block;
+  margin: 2rem auto 0 auto;
   background: linear-gradient(
     to right,
     var(--violeta-medio),
@@ -76,15 +97,15 @@
   );
   color: white;
   font-weight: bold;
-  font-size: 1rem;
-  padding: 10px 18px;
+  font-size: 1.1rem;
+  padding: 12px 28px;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.form-proyecto button:hover {
+.btn-guardar:hover {
   transform: scale(1.05);
   background: linear-gradient(
     to right,
@@ -93,128 +114,82 @@
   );
 }
 
-/* Campo de texto largo (descripción) */
-.form-proyecto textarea {
-  padding: 10px;
-  border: 2px solid var(--violeta-medio);
-  border-radius: 8px;
-  font-size: 1rem;
-  color: var(--violeta-oscuro);
-  background: #fff;
-  min-height: 80px;
-  resize: vertical;
-}
-
-/* Contenedor de integrantes */
-.integrante-fields {
-  margin-top: 0.5rem;
-  padding: 0.8rem;
-  border-left: 4px solid var(--violeta-medio);
-  background: #f9f9f9;
-  border-radius: 6px;
-}
-
-/* Inputs de integrantes */
-.integrante-fields input {
-  margin-bottom: 0.5rem;
-  padding: 8px;
-  border: 1px solid var(--violeta-medio);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  background: #fff;
-}
-
-.integrante-fields label {
-  font-weight: 600;
-  color: var(--violeta-oscuro);
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.form-subtitle {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--violeta-oscuro);
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
 /* Cards */
+/* Contenedor de cards: mantiene filas de 2 en 2 */
 .cards {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 2rem;
   justify-content: center;
+  padding: 2rem;
 }
 
-.card {
+/* Card general */
+.proyecto-card {
   border: 2px solid var(--violeta-medio);
-  border-radius: 8px;
-  width: 250px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   transition:
     transform 0.2s,
     border-color 0.2s;
 }
 
-.card:hover {
+.proyecto-card:hover {
   transform: scale(1.05);
   border-color: var(--violeta-oscuro);
 }
 
-/* Cuadro superior: título */
-.card-header {
+/* Header con altura uniforme para títulos */
+.proyecto-card .card-header {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     to right,
     var(--violeta-medio) 0%,
     var(--violeta-claro) 50%,
     var(--violeta-medio) 100%
   );
-  padding: 1rem;
-  text-align: center;
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-header h3 {
-  margin: 0;
   color: var(--violeta-oscuro);
-  line-height: 1.2;
-  text-align: center;
 }
 
-/* Cuadro inferior: id, categoría y estado */
-.card-body {
+.proyecto-card .card-header h3 {
+  margin: 0;
+  text-align: center;
+  color: var(--violeta-oscuro);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Body con degradado violeta */
+.proyecto-card .card-body {
   background: linear-gradient(
     to bottom,
     var(--violeta-medio) 0%,
     var(--violeta-claro) 50%,
     var(--violeta-medio) 100%
   );
-  padding: 1rem;
-  text-align: left;
   color: var(--violeta-oscuro);
+  padding: 1rem;
 }
 
-.card-body p {
-  margin: 0.3rem 0;
-  font-weight: 500;
-}
-
-/* Footer de la card */
-.card-footer {
+/* Footer con gradiente suave */
+.proyecto-card .card-footer {
+  background: linear-gradient(
+    to right,
+    var(--violeta-medio) 0%,
+    var(--violeta-claro) 50%,
+    var(--violeta-medio) 100%
+  );
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem;
 }
 
-/* Botón Ver Detalle */
+/* Botón Ver detalle */
 .btn-detalle {
   background: linear-gradient(
     to right,
@@ -223,59 +198,20 @@
   );
   color: white;
   font-weight: bold;
-  font-size: 0.9rem;
-  padding: 8px 14px;
   border: none;
   border-radius: 20px;
-  cursor: pointer;
+  padding: 6px 12px;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-detalle:hover {
-  background: linear-gradient(
-    to right,
-    var(--violeta-oscuro),
-    var(--violeta-medio)
-  );
+  background: linear-gradient(to bottom, #007bff, var(--violeta-medio));
   transform: scale(1.05);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.btn-detalle:active {
-  transform: scale(0.95);
 }
 
 /* Botón Eliminar */
 .btn-eliminar {
-  background: linear-gradient(
-    to right,
-    var(--violeta-oscuro),
-    var(--violeta-medio)
-  );
-  color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-
-.btn-eliminar:hover {
-  background: linear-gradient(to right, #c0392b, #ff6b6b);
-  transform: scale(1.05);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
-
-.btn-eliminar:active {
-  transform: scale(0.95);
-}
-
-/* Button Agregar */
-.btn-agregar {
   background: linear-gradient(
     to right,
     var(--violeta-medio),
@@ -283,25 +219,70 @@
   );
   color: white;
   font-weight: bold;
-  font-size: 1rem;
-  padding: 12px 20px;
   border: none;
-  border-radius: 25px;
-  cursor: pointer;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-agregar:hover {
+.btn-eliminar:hover {
+  background: linear-gradient(to bottom, #dc3545, var(--violeta-medio));
+  transform: scale(1.05);
+}
+
+/* Dashboard */
+/* Título principal */
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--violeta-medio);
+  margin-bottom: 1.5rem;
+}
+
+/* Bloque introductorio */
+.dashboard-intro {
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  line-height: 1.7;
   background: linear-gradient(
     to right,
-    var(--violeta-oscuro),
+    var(--violeta-medio),
+    var(--violeta-claro),
     var(--violeta-medio)
   );
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.btn-agregar:active {
-  transform: scale(0.95);
+/* Cards de métricas centradas */
+.dashboard-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.dashboard-metrics .card {
+  background: linear-gradient(
+    to bottom,
+    var(--violeta-medio) 0%,
+    var(--violeta-claro) 50%,
+    var(--violeta-medio) 100%
+  );
+  width: 280px;
+  text-align: center;
+  border: 2px solid var(--violeta-medio);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-metrics .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

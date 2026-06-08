@@ -102,9 +102,14 @@ const proyectoService = (() => {
     },
   ];
 
+  // 🔹 Funciones flecha exportadas
+  let nextId = proyectos.length + 1;
+
   const obtenerProyectos = () => [...proyectos];
 
   const agregarProyecto = (nuevoProyecto) => {
+    // asignar ID secuencial
+    nuevoProyecto.id = nextId++;
     proyectos.push(nuevoProyecto);
   };
 
@@ -118,11 +123,16 @@ const proyectoService = (() => {
     );
   };
 
+  const obtenerProyectoPorId = (id) => {
+    return proyectos.find((p) => p.id === id);
+  };
+
   return {
     obtenerProyectos,
     agregarProyecto,
     eliminarProyecto,
     buscarProyecto,
+    obtenerProyectoPorId,
   };
 })();
 

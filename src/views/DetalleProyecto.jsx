@@ -1,22 +1,39 @@
 import "../css/detalleProyecto.css";
+import { useParams, Link } from "react-router-dom";
+import proyectoService from "../services/proyectoService";
+import { Container, Button } from "react-bootstrap";
 
-const DetalleProyecto = ({ proyecto }) => {
-  if (!proyecto) return null;
+const DetalleProyecto = () => {
+  const { id } = useParams();
+  const proyecto = proyectoService.obtenerProyectoPorId(Number(id));
 
-  const { titulo, descripcion, recursos, equipo } = proyecto;
+  if (!proyecto) {
+    return (
+      <Container className="mt-4 detalle-container">
+        <h2 className="detalle-title">Proyecto no encontrado</h2>
+        <Link to="/proyectos">
+          <Button className="btn-volver">⬅️ Volver al listado</Button>
+        </Link>
+      </Container>
+    );
+  }
+
+  const { titulo, descripcion, recursos, equipo, categoria, estado } = proyecto;
 
   return (
-    <section className="detalle">
+    <Container className="mt-4 detalle-container">
       <table className="detalle-table">
         <tbody>
-          {/* Fila de título */}
           <tr>
-            <td colSpan="2" className="detalle-titulo">
-              {titulo}
+            <th></th>
+            <td>
+              <h2 className="detalle-title">{titulo}</h2>
+              <p className="detalle-subtitle">
+                <strong>Categoría:</strong> {categoria} |{" "}
+                <strong>Estado:</strong> {estado}
+              </p>
             </td>
           </tr>
-
-          {/* Descripción */}
           <tr>
             <th>Descripción</th>
             <td>
@@ -24,38 +41,35 @@ const DetalleProyecto = ({ proyecto }) => {
               <p>{descripcion.parrafo2}</p>
             </td>
           </tr>
-
-          {/* Recursos */}
           <tr>
             <th>Recursos</th>
             <td>
-              <ul className="detalle-recursos">
+              <ul>
                 {recursos.map((r, i) => (
                   <li key={i}>
-                    <button
+                    <Button
                       className="btn-recurso"
+                      size="sm"
                       onClick={(e) => e.preventDefault()}
                     >
-                      📂 {r.nombre}
-                    </button>
+                      {r.nombre}
+                    </Button>
                   </li>
                 ))}
               </ul>
             </td>
           </tr>
-
-          {/* Equipo */}
           <tr>
             <th>Equipo</th>
             <td>
-              <ul className="detalle-equipo">
+              <ul>
                 {equipo.map((m, i) => (
                   <li key={i}>
                     👥{" "}
-                    <span className="equipo-nombre">
+                    <strong>
                       {m.nombre} {m.apellido}
-                    </span>
-                    <span className="equipo-rol"> - {m.rol}</span>
+                    </strong>{" "}
+                    - <em>{m.rol}</em>
                   </li>
                 ))}
               </ul>
@@ -63,7 +77,11 @@ const DetalleProyecto = ({ proyecto }) => {
           </tr>
         </tbody>
       </table>
-    </section>
+
+      <Link to="/proyectos">
+        <Button className="btn-volver">⬅️ Volver al listado</Button>
+      </Link>
+    </Container>
   );
 };
 
