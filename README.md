@@ -7,7 +7,7 @@
 
 ### Descripción del proyecto
 Este repositorio contiene el desarrollo del **Trabajo Práctico Nº3** de la materia *Programación Visual*.  
-El objetivo es realizar una introducción al desarrollo de aplicaciones web utilizando **React**, conceptos clave, estructura básica, uso de componentes, estado y hooks. 
+El objetivo es realizar una introducción al desarrollo de aplicaciones web utilizando **React + React-Router-Dom + React-Bootstrap**, conceptos clave, estructura básica, uso de componentes, estado y hooks. 
 
 ### Página de Gestión de Proyectos Educativos
 
@@ -24,6 +24,8 @@ Se implementa useEffect y se refactoriza el componente para utilizar RegistroAct
 de proyecto individual.
 - **RegistroActividad.jsx**: Muestra de forma clara al usuario cuándo ocurrió la última modificación en el arreglo de proyectos.
 - **FormularioProyecto.jsx**: Representa el formulario para agregar proyectos en un componente individual.
+- **Dashboard.jsx**: Incluye un título, descripción general y un par de tarjetas de React-Bootstrap (Card) que muestran métricas simuladas.
+- **PerfilUsuario.jsx**: Pantalla del perfil del usuario que muestra los datos del alumno o docente (Nombre, Rol, Institución) 
 
 ### Funcionalidades implementadas
 - **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
@@ -52,6 +54,11 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - DetalleProyecto.jsx
   - **TP3 - Parte 3**
     - RegistroActividad.jsx
+  - **TP3 - Parte 4**
+    - Actividad 2:  
+    - Creación de la carpeta `src/views/`  
+    - Separación de vistas completas y componentes secundarios  
+    - Alta de nuevas vistas requeridas (`Dashboard.jsx`, `PerfilUsuario.jsx`) 
 
 - **Sivila Emilce Andrea**
   - **TP3 - Parte 1**
@@ -64,11 +71,21 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - ProyectoCard.jsx
   - **TP3 - Parte 3**
     - FormularioProyecto.jsx
+  - **TP3 - Parte 4**
+    - Actividad 1: Implementación de Rutas con React Router  
+    - Configuración del enrutador principal  
+    - Declaración de rutas dinámicas (`/dashboard`, `/proyectos`, `/proyectos/:id`, `/perfil`)  
+    - Refactorización del menú `<Nav />` con `NavLink`
+    - Actividad 3: Adopción de un Framework de Componentes (React Bootstrap)  
+    - Refactorización de formularios y controles con componentes de Bootstrap  
+    - Uso de componentes de presentación como `Alert` para mensajes y estados
 
 - **Tareas en común**
   - Edición de archivos de estilos en la carpeta **css**
   - Edición del archivo **proyectoService.js** en la carpeta **services**
-  - Edición del archivo **App.jsx** 
+  - Edición del archivo **App.jsx**
+  - Organización de Archivos y Estructura del Proyecto
+  - Instalación y uso de un Framework de Componentes (React Bootstrap)
 
 ## React + Vite
 
@@ -91,7 +108,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - HTML5  
 - CSS3
 - JavaScript
-- React + Vite 
+- React + Vite + Router-Dom + Bootstrap
 - Git & GitHub  
 
 ## Licencia
