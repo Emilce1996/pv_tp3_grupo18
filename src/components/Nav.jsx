@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-  const [links] = useState([
-    { id: 1, nombre: "Inicio", href: "#" },
-    { id: 2, nombre: "Proyectos", href: "#" },
-    { id: 3, nombre: "Usuario", href: "#" },
-  ]);
+  const links = [
+    { id: 1, nombre: "Inicio", path: "/inicio" },
+    { id: 2, nombre: "Proyectos", path: "/proyectos" },
+    { id: 3, nombre: "Mi Perfil", path: "/perfil" },
+  ];
 
   return (
     <nav>
       <ul>
         {links.map((link) => (
           <li key={link.id}>
-            <a href={link.href}>{link.nombre}</a>
+            <NavLink
+              to={link.path}
+              style={({ isActive }) => ({
+                fontWeight: isActive ? "bold" : "normal",
+                textDecoration: "none",
+              })}
+            >
+              {link.nombre}
+            </NavLink>
           </li>
         ))}
       </ul>
