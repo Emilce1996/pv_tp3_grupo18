@@ -1,4 +1,4 @@
-# Trabajo Práctico Nº3 – React – Parte 1 – 2 – 3 – 4
+# Trabajo Práctico Nº3 – React – Parte 1 – 2 – 3 – 4 – 5
 
 ## Integrantes del Grupo 18
 - Goyochea Kevin – [@KevinGoyochea](https://github.com/KevinGoyochea)
@@ -25,7 +25,10 @@ de proyecto individual.
 - **RegistroActividad.jsx**: Muestra de forma clara al usuario cuándo ocurrió la última modificación en el arreglo de proyectos.
 - **FormularioProyecto.jsx**: Representa el formulario para agregar proyectos en un componente individual.
 - **Dashboard.jsx**: Incluye un título, descripción general y un par de tarjetas de React-Bootstrap (Card) que muestran métricas simuladas.
-- **PerfilUsuario.jsx**: Pantalla del perfil del usuario que muestra los datos del alumno o docente (Nombre, Rol, Institución) 
+- **PerfilUsuario.jsx**: Pantalla del perfil del usuario que muestra los datos del alumno o docente (Nombre, Rol, Institución)
+- **UsuarioContext.jsx**: Este contexto debe almacenar un objeto usuario con los datos del perfil (nombre, dni, rol: "Docente" o "Alumno", e institución)
+- **Consumo del Estado Global en el Encabezado (<Header />)**: El encabezado de la aplicación deberá mutar para volverse dinámico.
+- **Refactorización Dinámica de la Vista de Perfil (<PerfilUsuario />)**: La pantalla de perfil dejará de contener datos fijos.
 
 ### Funcionalidades implementadas
 - **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
@@ -43,8 +46,8 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - buscarProyecto
   - **TP3 - Parte 2**
     - Actualizar el archivo ListaProyectos.jsx
-  - **TP3 - Parte 3**
-    - Refactorizar el archivo ListaProyectos.jsx
+  - **TP3 - Parte 5**
+    - Crear UsuarioContext.jsx
 
 - **Medina Brisa Lourdes**
   - **TP3 - Parte 1**
@@ -58,7 +61,9 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - Actividad 2:  
     - Creación de la carpeta `src/views/`  
     - Separación de vistas completas y componentes secundarios  
-    - Alta de nuevas vistas requeridas (`Dashboard.jsx`, `PerfilUsuario.jsx`) 
+    - Alta de nuevas vistas requeridas (`Dashboard.jsx`, `PerfilUsuario.jsx`)
+  - **TP3 - Parte 5**
+    - Refactorización Dinámica de la Vista de Perfil (<PerfilUsuario />)
 
 - **Sivila Emilce Andrea**
   - **TP3 - Parte 1**
@@ -79,6 +84,9 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - Actividad 3: Adopción de un Framework de Componentes (React Bootstrap)  
     - Refactorización de formularios y controles con componentes de Bootstrap  
     - Uso de componentes de presentación como `Alert` para mensajes y estados
+  - **TP3 - Parte 5**
+    - Consumo del Estado Global en el Encabezado (<Header />)  
+    - Apartado de Complejidad: Persistencia del Estado Global (LocalStorage)
 
 - **Tareas en común**
   - Edición de archivos de estilos en la carpeta **css**
@@ -86,6 +94,7 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
   - Edición del archivo **App.jsx**
   - Organización de Archivos y Estructura del Proyecto
   - Instalación y uso de un Framework de Componentes (React Bootstrap)
+  - Refactorizar el archivo ListaProyectos.jsx
 
 ## React + Vite
 
