@@ -22,8 +22,10 @@ body {
 /* Header */
 .header {
   background-color: var(--violeta-medio);
-  padding: 3rem;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
   margin-bottom: 1rem;
 }
 
@@ -34,6 +36,7 @@ body {
   color: var(--violeta-oscuro);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   letter-spacing: 1px;
+  text-align: left;
 }
 
 /* Nav */
@@ -159,12 +162,19 @@ nav a:active {
 
 @media (max-width: 768px) {
   .header {
-    padding: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .header-title {
-    font-size: 1.5rem;
-    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .header > div {
+    margin-top: 0.5rem;
   }
 
   nav ul {

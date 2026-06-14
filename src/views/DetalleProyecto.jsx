@@ -2,6 +2,12 @@ import "../css/detalleProyecto.css";
 import { useParams, Link } from "react-router-dom";
 import proyectoService from "../services/proyectoService";
 import { Container, Button } from "react-bootstrap";
+import {
+  PeopleFill,
+  ArrowLeftCircle,
+  Github,
+  FilePdf,
+} from "react-bootstrap-icons";
 
 const DetalleProyecto = () => {
   const { id } = useParams();
@@ -12,7 +18,10 @@ const DetalleProyecto = () => {
       <Container className="mt-4 detalle-container">
         <h2 className="detalle-title">Proyecto no encontrado</h2>
         <Link to="/proyectos">
-          <Button className="btn-volver">⬅️ Volver al listado</Button>
+          <Button className="btn-volver">
+            <ArrowLeftCircle style={{ marginRight: "0.4rem" }} />
+            Volver al listado
+          </Button>
         </Link>
       </Container>
     );
@@ -44,9 +53,33 @@ const DetalleProyecto = () => {
           <tr>
             <th>Recursos</th>
             <td>
-              <ul>
+              <ul style={{ listStyle: "none", paddingLeft: 0 }}>
                 {recursos.map((r, i) => (
-                  <li key={i}>
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    {/* Ícono según tipo de recurso */}
+                    {r.nombre.includes("GitHub") && (
+                      <Github
+                        style={{
+                          marginRight: "0.5rem",
+                          color: "var(--violeta-oscuro)",
+                        }}
+                      />
+                    )}
+                    {r.nombre.includes("PDF") && (
+                      <FilePdf
+                        style={{
+                          marginRight: "0.5rem",
+                          color: "var(--violeta-oscuro)",
+                        }}
+                      />
+                    )}
                     <Button
                       className="btn-recurso"
                       size="sm"
@@ -62,10 +95,22 @@ const DetalleProyecto = () => {
           <tr>
             <th>Equipo</th>
             <td>
-              <ul>
+              <ul style={{ listStyle: "none", paddingLeft: 0 }}>
                 {equipo.map((m, i) => (
-                  <li key={i}>
-                    👥{" "}
+                  <li
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "0.5rem",
+                    }}
+                  >
+                    <PeopleFill
+                      style={{
+                        marginRight: "0.4rem",
+                        color: "var(--violeta-oscuro)",
+                      }}
+                    />
                     <strong>
                       {m.nombre} {m.apellido}
                     </strong>{" "}
@@ -79,7 +124,10 @@ const DetalleProyecto = () => {
       </table>
 
       <Link to="/proyectos">
-        <Button className="btn-volver">⬅️ Volver al listado</Button>
+        <Button className="btn-volver">
+          <ArrowLeftCircle style={{ marginRight: "0.4rem" }} />
+          Volver al listado
+        </Button>
       </Link>
     </Container>
   );

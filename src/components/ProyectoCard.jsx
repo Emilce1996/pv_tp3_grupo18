@@ -1,5 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Trash3 } from "react-bootstrap-icons";
 
 const ProyectoCard = ({ proyecto, onEliminar }) => {
   const { id, titulo, categoria, estado } = proyecto;
@@ -17,12 +18,19 @@ const ProyectoCard = ({ proyecto, onEliminar }) => {
           <strong>Estado:</strong> {estado}
         </p>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="d-flex justify-content-between">
         <Link to={`/proyectos/${id}`}>
           <Button className="btn-detalle">Ver detalle</Button>
         </Link>
         <Button className="btn-eliminar" onClick={() => onEliminar(id)}>
-          🗑️ Eliminar
+          <Trash3
+            style={{
+              marginRight: "0.4rem",
+              position: "relative",
+              top: "-2px",
+            }}
+          />
+          Eliminar
         </Button>
       </Card.Footer>
     </Card>
