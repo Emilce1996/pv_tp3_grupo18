@@ -13,9 +13,11 @@ import {
 import Dashboard from "./views/Dashboard";
 import DetalleProyecto from "./views/DetalleProyecto";
 import PerfilUsuario from "./views/PerfilUsuario";
+import { UsuarioProvider } from "./context/UsuarioContext";
 
 const App = () => {
   return (
+    <UsuarioProvider>
     <Router>
       <Header />
       <Nav />
@@ -30,6 +32,7 @@ const App = () => {
       </main>
       <Footer />
     </Router>
+    </UsuarioProvider>
   );
 };
 
