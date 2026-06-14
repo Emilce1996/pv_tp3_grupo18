@@ -26,7 +26,10 @@ useEffect(() => {
   }, [usuario]); //
 
 const actualizarPerfil = (datosActualizados) => {
-    setUsuario(datosActualizados);
+    setUsuario((usuarioAnterior) => ({
+        ...usuarioAnterior,
+        ...datosActualizados,
+    }));
 };
 
 return (
