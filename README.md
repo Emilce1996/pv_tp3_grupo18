@@ -27,8 +27,8 @@ de proyecto individual.
 - **Dashboard.jsx**: Incluye un título, descripción general y un par de tarjetas de React-Bootstrap (Card) que muestran métricas simuladas.
 - **PerfilUsuario.jsx**: Pantalla del perfil del usuario que muestra los datos del alumno o docente (Nombre, Rol, Institución)
 - **UsuarioContext.jsx**: Este contexto debe almacenar un objeto usuario con los datos del perfil (nombre, dni, rol: "Docente" o "Alumno", e institución)
-- **Consumo del Estado Global en el Encabezado (<Header />)**: El encabezado de la aplicación deberá mutar para volverse dinámico.
-- **Refactorización Dinámica de la Vista de Perfil (<PerfilUsuario />)**: La pantalla de perfil dejará de contener datos fijos.
+- **Consumo del Estado Global en el Encabezado (`<Header />`)**: El encabezado de la aplicación deberá mutar para volverse dinámico.
+- **Refactorización Dinámica de la Vista de Perfil (`<PerfilUsuario />`)**: La pantalla de perfil dejará de contener datos fijos.
 
 ### Funcionalidades implementadas
 - **obtenerProyectos**: retorna una copia del arreglo actual de proyectos.  
@@ -63,7 +63,7 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - Separación de vistas completas y componentes secundarios  
     - Alta de nuevas vistas requeridas (`Dashboard.jsx`, `PerfilUsuario.jsx`)
   - **TP3 - Parte 5**
-    - Refactorización Dinámica de la Vista de Perfil (<PerfilUsuario />)
+    - Refactorización Dinámica de la Vista de Perfil (`<PerfilUsuario />`)
 
 - **Sivila Emilce Andrea**
   - **TP3 - Parte 1**
@@ -85,7 +85,7 @@ El objetivo principal es mostrar el **Listado de Proyectos** como contenido cent
     - Refactorización de formularios y controles con componentes de Bootstrap  
     - Uso de componentes de presentación como `Alert` para mensajes y estados
   - **TP3 - Parte 5**
-    - Consumo del Estado Global en el Encabezado (<Header />)  
+    - Consumo del Estado Global en el Encabezado (`<Header />`)  
     - Apartado de Complejidad: Persistencia del Estado Global (LocalStorage)
 
 - **Tareas en común**
