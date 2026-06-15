@@ -1,40 +1,39 @@
 import { createContext, useState, useEffect } from "react";
 
-export const UsuarioContext = createContext();
+const UsuarioContext = createContext();
 
-export const UsuarioProvider = ({ children }) => {
-  //Verificacion del localStorage antes de cargar datos
-const [usuario, setUsuario] = useState(() => {
-    //Esto busca si ya hay datos guardados en el nombre de "perfilUsuario"
-    const datosGuardados = localStorage.getItem("perfilUsuario");
-    
-    if (datosGuardados) {
-      // si se encunetran datos, se convierten de texto JSON a objetos de react
-    return JSON.parse(datosGuardados);
-    }
-    return {
-    nombre: "Juan Perez",
-    dni: "26156230",
-    rol: "Docente",
-    institucion: "Universidad Nacional de Jujuy"
-    };
-});
+const UsuarioProvider = ({ children }) => {
+  // Inicializar estado desde localStorage si existe
+  const usuarioGuardado = localStorage.getItem("usuario");
+  const [usuario, setUsuario] = useState(
+    usuarioGuardado
+      ? JSON.parse(usuarioGuardado)
+      : {
+          nombre: "Carla Zapana",
+          dni: "23938247",
+          rol: "Docente",
+          institucion: "Facultad de Ingeniería - UNJu",
+        },
+  );
 
-useEffect(() => {
-    // Cada vez que usuario se cambie, se convierte a texto y lo guardamos
-    localStorage.setItem("perfilUsuario", JSON.stringify(usuario));
-  }, [usuario]); //
-
-const actualizarPerfil = (datosActualizados) => {
-    setUsuario((usuarioAnterior) => ({
-        ...usuarioAnterior,
-        ...datosActualizados,
+  // Función para actualizar perfil
+  const actualizarPerfil = (nuevoPerfil) => {
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      ...nuevoPerfil,
     }));
+  };
+
+  // Persistir cambios en localStorage
+  useEffect(() => {
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+  }, [usuario]);
+
+  return (
+    <UsuarioContext.Provider value={{ usuario, actualizarPerfil }}>
+      {children}
+    </UsuarioContext.Provider>
+  );
 };
 
-return (
-    <UsuarioContext.Provider value={{ usuario, actualizarPerfil }}>
-    {children}
-    </UsuarioContext.Provider>
-);
-};
+export { UsuarioContext, UsuarioProvider };
